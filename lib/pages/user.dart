@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:Face_recognition/detector_painters.dart';
+import 'package:Face_recognition/pages/detector_painters.dart';
 import 'package:Face_recognition/pages/widgets/themes.dart';
-import 'package:Face_recognition/utils.dart';
+import 'package:Face_recognition/pages/utils.dart';
 import 'package:Face_recognition/utils/routes.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:path_provider/path_provider.dart';

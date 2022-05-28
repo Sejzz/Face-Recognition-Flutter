@@ -1,25 +1,25 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:Face_recognition/detector_painters.dart';
-import 'package:Face_recognition/utils.dart';
+import 'package:Face_recognition/pages/detector_painters.dart';
+import 'package:Face_recognition/pages/utils.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
 // import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
-//import 'detector_painters.dart';
-//import 'utils.dart';
+import 'detector_painters.dart';
+import 'utils.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:quiver/collection.dart';
 import 'package:flutter/services.dart';
 
-class _MyHomePage extends StatefulWidget {
+class camera extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  cameraState createState() => cameraState();
 }
 
-class _MyHomePageState extends State<_MyHomePage> {
+class cameraState extends State<camera> {
   File? jsonFile;
   dynamic _scanResults;
   CameraController? _camera;

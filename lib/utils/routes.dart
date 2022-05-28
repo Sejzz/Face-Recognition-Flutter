@@ -6,5 +6,5 @@ class MyRoutes{
      static String login_userRoute = "/login_user";
       static String login_adminRoute = "/login_admin";
        static String otp_userRoute = "/otp";
-        static String cameraRoute= "/_MyHomePage";
+        static String cameraRoute= "/camera";
 }
