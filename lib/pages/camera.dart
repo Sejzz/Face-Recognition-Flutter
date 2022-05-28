@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:Face_recognition/pages/detector_painters.dart';
 import 'package:Face_recognition/pages/utils.dart';
+import 'package:Face_recognition/pages/widgets/themes.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
@@ -197,7 +198,8 @@ class cameraState extends State<camera> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Face recognition'),
+        backgroundColor: MyTheme.blue,
+        title: const Text('Handcuffed Camera'),
         actions: <Widget>[
           PopupMenuButton<Choice>(
             onSelected: (Choice result) {
@@ -223,7 +225,7 @@ class cameraState extends State<camera> {
       floatingActionButton:
           Column(mainAxisAlignment: MainAxisAlignment.end, children: [
         FloatingActionButton(
-          backgroundColor: (_faceFound) ? Colors.blue : Colors.blueGrey,
+          backgroundColor: (_faceFound) ?  MyTheme.blue : Colors.blueGrey,
           child: Icon(Icons.add),
           onPressed: () {
             if (_faceFound) _addLabel();
@@ -234,6 +236,7 @@ class cameraState extends State<camera> {
           height: 10,
         ),
         FloatingActionButton(
+          backgroundColor: MyTheme.blue,
           onPressed: _toggleCameraDirection,
           heroTag: null,
           child: _direction == CameraLensDirection.back

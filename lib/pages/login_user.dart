@@ -2,6 +2,7 @@ import 'package:Face_recognition/pages/widgets/header.dart';
 import 'package:Face_recognition/pages/widgets/themes.dart';
 import 'package:Face_recognition/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class login_user extends StatefulWidget {
@@ -17,13 +18,13 @@ class _login_userState extends State<login_user> {
   String entered_phone = '';
   TextEditingController _controller = TextEditingController();
 
-//TextEditingController phoneController = TextEditingController(text: "+923028997122");
-  // TextEditingController otpController = TextEditingController();
+TextEditingController phoneController = TextEditingController(text: "+923028997122");
+   TextEditingController otpController = TextEditingController();
 
- // FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
   String verificationIDReceived = "";
-  bool otpCodeVisible = false;
-
+  bool otpVisibility = false;
+String verificationID = "";
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -54,6 +55,7 @@ class _login_userState extends State<login_user> {
                       EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
                   child: Column(children: [
                     TextFormField(
+                      controller: phoneController,
                       keyboardType: TextInputType.number,
                       //  inputFormatters: <TextInputFormatter>[
                       //    FilteringTextInputFormatter.digitsOnly
@@ -77,9 +79,24 @@ class _login_userState extends State<login_user> {
                         });
                       },
                     ),
+                     Visibility(child: TextField(
+              controller: otpController,
+              decoration: InputDecoration(),
+              keyboardType: TextInputType.number,
+            ),visible: otpVisibility,),
                     SizedBox(
-                      height: 50.0,
+                      height: 30.0,
                     ),
+                      ElevatedButton(
+                onPressed: () {
+                  if(otpVisibility){
+                    verifyOTP();
+                  }
+                  else {
+                    verifyNumber();
+                  }
+                },
+                child: Text(otpVisibility ? "Verify" : "Login")),
                     Material(
                       color: MyTheme.blue,
                       borderRadius:
@@ -134,5 +151,44 @@ class _login_userState extends State<login_user> {
         ),
       ),
     );
+  }
+
+    void verifyNumber() {
+    auth.verifyPhoneNumber(
+        phoneNumber: phoneController.text,
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          await auth.signInWithCredential(credential).then(((value) {
+            print("You are logged in successfully");
+          }));
+        },
+        verificationFailed: (FirebaseAuthException exception) {
+          print(exception.message);
+        },
+        codeSent: (String verificationID, int? resendToken) {
+           otpVisibility = true;
+          verificationIDReceived = verificationID;
+           setState(() {});
+        },
+        codeAutoRetrievalTimeout: (String verificationID) {
+
+        });
+  }
+
+  void verifyOTP() async {
+
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationID, smsCode: otpController.text);
+
+    await auth.signInWithCredential(credential).then((value){
+      print("You are logged in successfully");
+    //  // Fluttertoast.showToast(
+    //       msg: "You are logged in successfully",
+    //       toastLength: Toast.LENGTH_SHORT,
+    //       gravity: ToastGravity.CENTER,
+    //       timeInSecForIosWeb: 1,
+    //       backgroundColor: Colors.red,
+    //       textColor: Colors.white,
+    //       fontSize: 16.0
+     // );
+    });
   }
 }

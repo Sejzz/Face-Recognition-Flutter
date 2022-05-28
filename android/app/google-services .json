@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "451273201083",
+    "project_id": "otp-project-83f15",
+    "storage_bucket": "otp-project-83f15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451273201083:android:f348e389e9ace43672209e",
+        "android_client_info": {
+          "package_name": "com.rajatkalsotra.face_recognition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451273201083-j0bvcj3lq8n1gj4ijbiu23e5sb370bdg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rajatkalsotra.face_recognition",
+            "certificate_hash": "860738b4d352cf078bae40b93f6cf75120e9a5e8"
+          }
+        },
+        {
+          "client_id": "451273201083-9vdr7ladc7ppqpkclompnrkh41slmbn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnrAm1GSAHj5oWNh4hqRht9nTh9aZp5ks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451273201083-9vdr7ladc7ppqpkclompnrkh41slmbn6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

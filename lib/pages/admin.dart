@@ -19,7 +19,7 @@ class _adminState extends State<admin> {
         title: Text('ADMIN'),
         leading: IconButton(onPressed: () {}, icon: Icon(Icons.person), iconSize: 26,),
         iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: MyTheme.blue4,
+        backgroundColor: MyTheme.blue,
         elevation: 0,
       ),
       body: Column(

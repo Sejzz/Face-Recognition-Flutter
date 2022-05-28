@@ -36,11 +36,14 @@ class _userState extends State<user> {
           iconSize: 26,
         ),
         iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: MyTheme.blue4,
+        backgroundColor: MyTheme.blue,
         elevation: 0,
       ),
-      body:// Padding(padding: EdgeInsets.symmetric(horizontal: 200, vertical: 10)),
-         // SizedBox(height: 20.0),
+      body: 
+       Column(
+        
+        children: [Padding(padding: EdgeInsets.symmetric(horizontal: 200, vertical: 30)),
+          SizedBox(height: 0.0),
           
            Container(
   height: 150.0,
@@ -79,6 +82,7 @@ class _userState extends State<user> {
 ), 
       
       
-    );
+  ]
+      )  );
   }
 }

@@ -8,6 +8,7 @@ import 'package:Face_recognition/pages/otp_user.dart';
 import 'package:Face_recognition/pages/camera.dart';
 import 'package:Face_recognition/pages/user.dart';
 import 'package:Face_recognition/utils/routes.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
@@ -20,7 +21,9 @@ import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:quiver/collection.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     themeMode: ThemeMode.light,
     theme: ThemeData(brightness: Brightness.light),
